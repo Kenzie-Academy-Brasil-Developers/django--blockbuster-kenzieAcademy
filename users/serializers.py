@@ -39,9 +39,3 @@ class UserSerializer(serializers.Serializer):
             raise serializers.ValidationError(detail="username already taken.")
 
         return username
-
-
-class LoginSerializer(serializers.Serializer):
-    username = serializers.CharField(max_length=20, write_only=True)
-    password = serializers.CharField(write_only=True)
-    is_superuser = serializers.BooleanField(read_only=True)
