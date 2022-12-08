@@ -40,7 +40,7 @@ DJANGO_APPS = [
 
 TPA = ["rest_framework"]
 
-MY_APPS = ["users"]
+MY_APPS = ["users", "movies"]
 
 INSTALLED_APPS = DJANGO_APPS + TPA + MY_APPS
 

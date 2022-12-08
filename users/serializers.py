@@ -5,7 +5,7 @@ from datetime import datetime
 
 class UserSerializer(serializers.Serializer):
     """
-    Serializer responsável por lidar com as tratativas referentes aos usuários cadastrados.
+    Validação referente a (class) models.User
     """
 
     id = serializers.IntegerField(read_only=True)

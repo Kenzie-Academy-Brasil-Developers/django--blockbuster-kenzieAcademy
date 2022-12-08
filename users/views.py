@@ -6,7 +6,7 @@ from .serializers import UserSerializer
 
 class UserViews(APIView):
     """
-    View responsável por realizar as tratativas de resposta das requisições referentes aos usuários da aplicação.
+    Tratativa de resposta referente a (class) models.User
     """
 
     def post(self, request: Request) -> Response:
