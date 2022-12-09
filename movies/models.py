@@ -26,11 +26,16 @@ class Movie(models.Model):
     """
 
     title = models.CharField(max_length=127)
-    duration = models.CharField(max_length=10, blank=True)
+    duration = models.CharField(max_length=10, null=True, default=None)
     rating = models.CharField(
         max_length=20,
         choices=RatingChoices.choices,
         default=RatingChoices.GENERAL_AUDIENCE,
-        blank=True,
+        null=True,
     )
-    synopsis = models.TextField(default=None, blank=True)
+    synopsis = models.TextField(default=None, null=True)
+    added_by = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        related_name="movies",
+    )
