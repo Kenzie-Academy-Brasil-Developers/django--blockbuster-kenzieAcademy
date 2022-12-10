@@ -1,4 +1,3 @@
-from ipdb import set_trace
 from rest_framework import serializers
 from .models import Movie, MovieOrder, RatingChoices
 
@@ -18,7 +17,7 @@ class MovieSerializer(serializers.Serializer):
     added_by = serializers.SerializerMethodField()
 
     def get_added_by(self, instance):
-        return instance.added_by.email
+        return instance.user.email
 
     def create(self, validated_data: dict):
         return Movie.objects.create(**validated_data)

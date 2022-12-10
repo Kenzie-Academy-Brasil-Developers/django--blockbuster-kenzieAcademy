@@ -19,7 +19,7 @@ class MovieViews(APIView):
     def post(self, request: Request) -> Response:
         serializer = MovieSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save(added_by=request.user)
+        serializer.save(user=request.user)
 
         return Response(serializer.data, status.HTTP_201_CREATED)
 

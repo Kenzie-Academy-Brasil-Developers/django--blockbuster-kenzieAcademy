@@ -35,9 +35,10 @@ class Movie(models.Model):
         null=True,
     )
     synopsis = models.TextField(default=None, null=True)
-    added_by = models.ForeignKey(
+    user = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="movies"
     )
+    added_by = models.CharField(max_length=127)
     bought_by = models.ManyToManyField(
         "users.User", through="movies.MovieOrder", related_name="buyed_movies"
     )
