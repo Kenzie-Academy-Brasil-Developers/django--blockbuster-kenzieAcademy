@@ -26,6 +26,10 @@ class Movie(models.Model):
     `synopsis`: Campo de texto (type: str) sem tamanho máximo que faz a referência a sinopse do filme.
     """
 
+    class Meta:
+        verbose_name = "Filme"
+        verbose_name_plural = "Filmes"
+
     title = models.CharField(max_length=127)
     duration = models.CharField(max_length=10, null=True, default=None)
     rating = models.CharField(
@@ -43,6 +47,9 @@ class Movie(models.Model):
         "users.User", through="movies.MovieOrder", related_name="buyed_movies"
     )
 
+    def __str__(self) -> str:
+        return self.title
+
 
 class MovieOrder(models.Model):
     """
@@ -50,6 +57,9 @@ class MovieOrder(models.Model):
 
     Recebe os seguintes parâmetros:
     """
+    class Meta:
+        verbose_name = "Filme Comprado"
+        verbose_name_plural = "Filmes Comprados"
 
     buyed_at = models.DateTimeField(auto_now_add=True)
     price = models.DecimalField(max_digits=8, decimal_places=2)
@@ -59,3 +69,6 @@ class MovieOrder(models.Model):
     buyed_by = models.ForeignKey(
         "users.User", on_delete=models.CASCADE, related_name="orders"
     )
+
+    def __str__(self) -> str:
+        return f"{self.title.title} - {self.buyed_by.first_name} {self.buyed_by.last_name}"

@@ -16,6 +16,10 @@ class User(AbstractUser):
     automaticamente {1} o campo `@is_superuser` será definido como True;
     """
 
+    class Meta:
+        verbose_name = "Usuário"
+        verbose_name_plural = "Usuários"
+
     username = models.CharField(max_length=20, unique=True)
     email = models.EmailField(max_length=127, unique=True)
     birthdate = models.DateField(blank=True)
@@ -23,3 +27,6 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=50)
     password = models.CharField(max_length=127)
     is_employee = models.BooleanField(default=False)
+
+    def __str__(self) -> str:
+        return f"{self.first_name} {self.last_name}"
