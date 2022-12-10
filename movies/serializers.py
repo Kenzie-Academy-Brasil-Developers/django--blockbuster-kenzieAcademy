@@ -1,3 +1,4 @@
+from ipdb import set_trace
 from rest_framework import serializers
 from .models import Movie, MovieOrder, RatingChoices
 
@@ -27,9 +28,10 @@ class MovieOrderSerializer(serializers.Serializer):
     """
     Validações referentes a tabela pivô `(class) models.MovieOrder`
     """
+
     id = serializers.IntegerField(read_only=True)
     title = serializers.SerializerMethodField()
-    price = serializers.FloatField()
+    price = serializers.DecimalField(max_digits=8, decimal_places=2)
     buyed_by = serializers.SerializerMethodField()
     buyed_at = serializers.DateTimeField(read_only=True)
 
@@ -40,5 +42,4 @@ class MovieOrderSerializer(serializers.Serializer):
         return instance.buyed_by.email
 
     def create(self, validated_data):
-        print(validated_data)
-        # return MovieOrder.objects.create(**validated_data)
+        return MovieOrder.objects.create(**validated_data)
