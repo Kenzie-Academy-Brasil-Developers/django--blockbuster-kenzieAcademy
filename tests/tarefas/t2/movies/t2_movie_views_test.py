@@ -43,8 +43,7 @@ class MovieViewsT2Test(APITestCase):
         resulted_status_code = response.status_code
 
         msg = (
-            "Verifique se o status code retornado do POST sem token "
-            + f"em `{self.BASE_URL}` é {expected_status_code}"
+            f"Verifique se o status code retornado do POST sem token em `{self.BASE_URL}` é {expected_status_code}"
         )
         self.assertEqual(expected_status_code, resulted_status_code, msg)
 
@@ -64,8 +63,7 @@ class MovieViewsT2Test(APITestCase):
         resulted_status_code = response.status_code
 
         msg = (
-            "Verifique se o status code retornado do POST sem token de employee"
-            + f"em `{self.BASE_URL}` é {expected_status_code}"
+            f"Verifique se o status code retornado do POST sem token de employee em `{self.BASE_URL}` é {expected_status_code}"
         )
         self.assertEqual(expected_status_code, resulted_status_code, msg)
 
@@ -85,8 +83,7 @@ class MovieViewsT2Test(APITestCase):
         resulted_status_code = response.status_code
 
         msg = (
-            "Verifique se o status code retornado do POST com token de employee "
-            + f"em `{self.BASE_URL}` é {expected_status_code}"
+            f"Verifique se o status code retornado do POST com token de employee em `{self.BASE_URL}` é {expected_status_code}"
         )
         self.assertEqual(expected_status_code, resulted_status_code, msg)
 
@@ -102,8 +99,7 @@ class MovieViewsT2Test(APITestCase):
         }
         resulted_data = response.json()
         msg = (
-            "Verifique as informações do filme retornadas no POST "
-            + f"em `{self.BASE_URL}` estão corretas."
+            f"Verifique as informações do filme retornadas no POST em `{self.BASE_URL}` estão corretas."
         )
         self.assertEqual(expected_data, resulted_data, msg)
 
@@ -119,8 +115,7 @@ class MovieViewsT2Test(APITestCase):
         expected_status_code = status.HTTP_400_BAD_REQUEST
         resulted_status_code = response.status_code
         msg = (
-            "Verifique se o status code retornado do POST sem todos os campos obrigatórios "
-            + f"em `{self.BASE_URL}` é {expected_status_code}"
+            f"Verifique se o status code retornado do POST sem todos os campos obrigatórios em `{self.BASE_URL}` é {expected_status_code}"
         )
         self.assertEqual(expected_status_code, resulted_status_code, msg)
 
@@ -144,8 +139,7 @@ class MovieViewsT2Test(APITestCase):
         expected_status_code = status.HTTP_204_NO_CONTENT
         result_status_code = response.status_code
         msg = (
-            "Verifique se o status code retornado do DELETE "
-            + f"em `{self.BASE_DETAIL_URL}` é {expected_status_code}"
+            f"Verifique se o status code retornado do DELETE em `{self.BASE_DETAIL_URL}` é {expected_status_code}"
         )
         self.assertEqual(expected_status_code, result_status_code, msg)
 
@@ -169,8 +163,7 @@ class MovieViewsT2Test(APITestCase):
         expected_status_code = status.HTTP_403_FORBIDDEN
         result_status_code = response.status_code
         msg = (
-            "Verifique se o status code retornado do DELETE "
-            + f"em `{self.BASE_URL}` é {expected_status_code}"
+            f"Verifique se o status code retornado do DELETE em `{self.BASE_URL}` é {expected_status_code}"
         )
         self.assertEqual(expected_status_code, result_status_code, msg)
 
@@ -189,7 +182,6 @@ class MovieViewsT2Test(APITestCase):
         resulted_status_code = response.status_code
 
         msg = (
-            "Verifique se o status code retornado do DELETE sem token "
-            + f"em `{self.BASE_URL}` é {expected_status_code}"
+            f"Verifique se o status code retornado do DELETE sem token em `{self.BASE_URL}` é {expected_status_code}"
         )
         self.assertEqual(expected_status_code, resulted_status_code, msg)

@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Movie, RatingChoices
+from .models import Movie, MovieOrder, RatingChoices
 
 
 class MovieSerializer(serializers.Serializer):
     """
-    Validações referente a (class) models.Movie
+    Validações referente a tabela `(class) models.Movie`
     """
 
     id = serializers.IntegerField(read_only=True)
@@ -21,3 +21,24 @@ class MovieSerializer(serializers.Serializer):
 
     def create(self, validated_data: dict):
         return Movie.objects.create(**validated_data)
+
+
+class MovieOrderSerializer(serializers.Serializer):
+    """
+    Validações referentes a tabela pivô `(class) models.MovieOrder`
+    """
+    id = serializers.IntegerField(read_only=True)
+    title = serializers.SerializerMethodField()
+    price = serializers.FloatField()
+    buyed_by = serializers.SerializerMethodField()
+    buyed_at = serializers.DateTimeField(read_only=True)
+
+    def get_title(self, instance: MovieOrder) -> str:
+        return instance.title.title
+
+    def get_buyed_by(self, instance: MovieOrder) -> str:
+        return instance.buyed_by.email
+
+    def create(self, validated_data):
+        print(validated_data)
+        # return MovieOrder.objects.create(**validated_data)
